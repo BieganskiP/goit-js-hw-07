@@ -8,7 +8,11 @@ const list = document.querySelector(".gallery");
 galleryItems.forEach((image) => {
   list.insertAdjacentHTML(
     "beforeend",
-    `<li class="gallery__item"><img src="${image.preview}" alt="${image.description}" class="gallery__image" data-source="${image.original}" loading="lazy"></img></li>`
+    `<div class="gallery__item">
+      <a class=gallery__link href="${image.original}">
+        <img src="${image.preview}" alt="${image.description}" class="gallery__image" data-source="${image.original}"/>
+      </a>
+    </div>`
   );
 });
 
@@ -26,9 +30,11 @@ function imageModal(event) {
 
   instance.show();
 
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      instance.close();
-    }
-  });
+  if (basicLightbox.visible() == true) {
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        instance.close();
+      }
+    });
+  }
 }
