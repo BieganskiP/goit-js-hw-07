@@ -30,11 +30,14 @@ function imageModal(event) {
 
   instance.show();
 
-  if (basicLightbox.visible() == true) {
-    document.addEventListener("keydown", function (event) {
+  document.addEventListener(
+    "keydown",
+    function (event) {
       if (event.key === "Escape") {
         instance.close();
+        abort();
       }
-    });
-  }
+    },
+    signal
+  );
 }
