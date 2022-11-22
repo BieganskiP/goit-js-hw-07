@@ -8,7 +8,7 @@ const list = document.querySelector(".gallery");
 galleryItems.forEach((image) => {
   list.insertAdjacentHTML(
     "beforeend",
-    `<li class="gallery__item"><img src="${image.preview}" alt="${image.description}" class="gallery__image" data-source="${image.original}"></img></li>`
+    `<li class="gallery__item"><img src="${image.preview}" alt="${image.description}" class="gallery__image" data-source="${image.original}" loading="lazy"></img></li>`
   );
 });
 
