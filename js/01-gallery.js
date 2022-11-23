@@ -30,14 +30,33 @@ function imageModal(event) {
 
   instance.show();
 
-  document.addEventListener(
-    "keydown",
-    function (event) {
-      if (event.key === "Escape") {
-        instance.close();
-        abort();
-      }
-    },
-    signal
-  );
+  // document.addEventListener(
+  //   "keydown",
+  //   function escapeKey(event) {
+  //     if (event.key === "Escape") {
+  //       instance.close();
+  //       console.log("esc");
+  //     }
+  //   },
+  //   { once: true }
+  // );
+
+  // document.addEventListener("keydown", escapeKey);
+  // function escapeKey(event) {
+  //   if (event.key === "Escape") {
+  //     instance.close();
+  //     document.removeEventListener("keydown", escapeKey);
+
+  //     console.log("esc");
+  //     return;
+  //   }
+  // }
+
+  document.addEventListener("keydown", function escapeKey(event) {
+    if (event.key === "Escape") {
+      instance.close();
+      document.removeEventListener("keydown", escapeKey);
+      console.log("esc");
+    }
+  });
 }
